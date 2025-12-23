@@ -1,4 +1,4 @@
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Initialize chat
     window.apolloChat = new ApolloChat();
     
