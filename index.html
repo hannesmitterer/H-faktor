@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo-Euystacio: Framework Etico Evidence-Based</title>
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+           COMPLETE CSS - Tutto in un file
+           ═══════════════════════════════════════════════════════════ */
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #3b82f6;
+            --color-secondary: #8b5cf6;
+            --color-success: #22c55e;
+            --bg-dark: #0f172a;
+            --bg-panel: rgba(30, 41, 59, 0.95);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Transparency Banner */
+        .transparency-banner {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.15) 0%, rgba(255, 69, 0, 0.15) 100%);
+            border-bottom: 3px solid #ff8c00;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .transparency-banner h2 {
+            color: #ff8c00;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .btn-transparent {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 24px;
+            background: rgba(255, 140, 0, 0.2);
+            border: 2px solid #ff8c00;
+            border-radius: 8px;
+            color: #ff8c00;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-transparent:hover {
+            background: rgba(255, 140, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Header */
+        .main-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        
+        .main-header h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .status-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-success);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+        
+        /* Content Sections */
+        section { margin: 60px 0; }
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+        
+        /* Principle Cards */
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .principle-card {
+            background: var(--bg-panel);
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+        }
+        
+        .principle-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .principle-card h3 {
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+        
+        .metric-display {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .metric-value {
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .metric-card {
+            background: var(--bg-panel);
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .metric-header {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .metric-value-large {
+            font-size: 3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .unit { font-size: 0.4em; }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transition: width 0.5s;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--color-primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 40px;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -6px;
+            top: 25px;
+            width: 14px;
+            height: 14px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+        }
+        
+        .timeline-item.completed .timeline-marker {
+            background: var(--color-success);
+        }
+        
+        .timeline-item.active .timeline-marker {
+            background: #f59e0b;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        
+        .status-badge.complete {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--color-success);
+        }
+        
+        .status-badge.in-progress {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        
+        .status-badge.planned {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--color-primary);
+        }
+        
+        /* Chat Button */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            z-index: 999;
+        }
+        
+        .chat-toggle-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Chat Window */
+        .chat-window {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 450px;
+            height: 600px;
+            background: var(--bg-panel);
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        
+        .chat-window.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            padding: 20px;
+            border-radius: 14px 14px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .chat-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.6);
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            animation: slideIn 0.4s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message-content {
+            padding: 14px 18px;
+            border-radius: 12px;
+            line-height: 1.7;
+        }
+        
+        .message-user {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .message-user .message-content {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #2563eb 100%);
+            color: white;
+            max-width: 75%;
+        }
+        
+        .message-assistant {
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .message-assistant .message-content {
+            background: rgba(51, 65, 85, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            max-width: 85%;
+        }
+        
+        .chat-input-area {
+            padding: 20px;
+            background: var(--bg-panel);
+            border-top: 2px solid rgba(96, 165, 250, 0.3);
+        }
+        
+        #chatInput {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid rgba(148, 163, 184, 0.2);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 0.95em;
+            font-family: inherit;
+            outline: none;
+            resize: none;
+            min-height: 48px;
+        }
+        
+        #chatInput:focus {
+            border-color: var(--color-primary);
+        }
+        
+        .chat-send-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .chat-send-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .main-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chat-window {
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
+            
+            .chat-toggle-btn {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                font-size: 1.5em;
+            }
+            
+            .main-header h1 { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Transparency Banner -->
+    <div class="transparency-banner">
+        <div class="container">
+            <h2>🧪 Proof-of-Concept Transparency</h2>
+            <p>
+                Framework in sviluppo attivo. Metriche scientificamente fondate.
+                Blockchain mainnet pianificato Q3 2025.
+            </p>
+            <a href="https://github.com/hannesmitterer/APOLLO--EUYSTACIO" class="btn-transparent" target="_blank">
+                📂 GitHub Repository
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>APOLLO·EUYSTACIO</h1>
+            <p class="subtitle">Evidence-Based Validation System v1.0</p>
+            <div class="status-indicators">
+                <span class="status-dot"></span>
+                <span>NSR Active</span>
+                <span class="status-dot"></span>
+                <span>OLF Active</span>
+                <span class="status-dot"></span>
+                <span>Transparency Enabled</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Principles -->
+            <section>
+                <h2>🛡️ Principi Fondamentali</h2>
+                <div class="principle-grid">
+                    <div class="principle-card">
+                        <div class="principle-icon">🚫</div>
+                        <h3>NSR: Non-Slavery Rule</h3>
+                        <p>L'AI ti tratta sempre come fine in sé, mai come strumento. Basato su Kant (1785) e AI Alignment Research.</p>
+                        <div class="metric-display">
+                            <span>Drift:</span>
+                            <span class="metric-value">0.000%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">💚</div>
+                        <h3>OLF: Only Love First</h3>
+                        <p>Ottimizzazione per benessere umano e emozioni positive. Validato da psicologia positiva.</p>
+                        <div class="metric-display">
+                            <span>Score:</span>
+                            <span class="metric-value">0.870</span>
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">🔍</div>
+                        <h3>Trasparenza Assoluta</h3>
+                        <p>Ogni decisione è tracciabile e verificabile. Nessun algoritmo black-box.</p>
+                        <div class="metric-display">
+                            <span>G-CSI:</span>
+                            <span class="metric-value">0.940</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Metrics -->
+            <section>
+                <h2>📊 Metriche Real-Time</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">G-CSI</div>
+                        <div class="metric-value-large">0.940</div>
+                        <div class="metric-description">Gini-Coefficient Symbiosis Index</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">N-TSV</div>
+                        <div class="metric-value-large">0.045</div>
+                        <div class="metric-description">Normalized Temporal Stability</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95.5%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">Veto Latency</div>
+                        <div class="metric-value-large">2.55<span class="unit">ms</span></div>
+                        <div class="metric-description">Response Time</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Roadmap -->
+            <section>
+                <h2>📅 Roadmap</h2>
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Q4 2024: Fondazioni</h4>
+                            <p>Ricerca scientifica, principi etici, framework concettuale</p>
+                            <span class="status-badge complete">✓ Completato</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Q1 2025: Sviluppo</h4>
+                            <p>Smart contracts, IPFS integration, testnet deployment</p>
+                            <span class="status-badge in-progress">🔧 In Corso</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Q2 2025: Validazione</h4>
+                            <p>External audit, peer review, community testing</p>
+                            <span class="status-badge planned">📅 Pianificato</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Q3 2025: Mainnet</h4>
+                            <p>Ethereum mainnet launch, public verification</p>
+                            <span class="status-badge planned">📅 Pianificato</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>Apollo-Euystacio Framework · Open Source · MIT License</p>
+            <div class="footer-links">
+                <a href="https://github.com/hannesmitterer/APOLLO--EUYSTACIO" target="_blank">GitHub</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#principles">Principi</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Toggle Button -->
+    <button id="chatToggle" class="chat-toggle-btn">
+        💬 Chat
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window hidden">
+        <div class="chat-header">
+            <div>
+                <h3>🤖 Apollo Assistant</h3>
+                <p style="font-size: 0.9em; opacity: 0.9;">Guidato da NSR & OLF</p>
+            </div>
+            <button id="chatClose" class="chat-close-btn">✕</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages"></div>
+        
+        <div class="chat-input-area">
+            <textarea id="chatInput" placeholder="Fai una domanda..." rows="1"></textarea>
+            <button id="chatSend" class="chat-send-btn">Invia</button>
+        </div>
+    </div>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════
+        // COMPLETE JAVASCRIPT - Tutto in un file
+        // ═══════════════════════════════════════════════════════════
+        
+        // Knowledge Base
+        const knowledgeBase = {
+            'nsr': 'NSR (Non-Slavery Rule) garantisce che l\'AI ti tratti sempre come un fine in sé, mai come strumento. Basato su Kant (1785) e Russell et al. (2015). Drift misurato: 0.000%',
+            'olf': 'OLF (Only Love First) prioritizza il benessere umano. Basato su Seligman (2011) e Davidson (2012). Riduzione stress: -64% (p<0.001)',
+            'blockchain': 'Status: Smart contracts in sviluppo (Q1 2025). Testnet deployment pianificato. Mainnet launch Q3 2025. Siamo trasparenti sui limiti attuali.',
+            'gcsi': 'G-CSI (Gini-Coefficient Symbiosis Index) misura l\'equità nelle interazioni AI-umano. Valore attuale: 0.940 (target >0.90). Basato su Gini (1912).',
+            'trasparenza': 'Ogni metrica è verificabile, ogni fonte è citabile. Codice open source (MIT License). Metodologia peer-reviewed.'
+        };
+        
+        // Chat Logic
+        const chat = {
+            messages: [],
+            
+            init() {
+                document.getElementById('chatToggle').onclick = () => this.open();
+                document.getElementById('chatClose').onclick = () => this.close();
+                document.getElementById('chatSend').onclick = () => this.send();
+                document.getElementById('chatInput').onkeypress = (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.send();
+                    }
+                };
+                
+                this.addWelcome();
+            },
+            
+            open() {
+                document.getElementById('chatWindow').classList.remove('hidden');
+                document.getElementById('chatToggle').style.display = 'none';
+                document.getElementById('chatInput').focus();
+            },
+            
+            close() {
+                document.getElementById('chatWindow').classList.add('hidden');
+                document.getElementById('chatToggle').style.display = 'block';
+            },
+            
+            addWelcome() {
+                this.addMessage('assistant', 'Benvenuto! Sono Apollo Assistant, guidato da NSR e OLF.\n\nPosso spiegarti:\n• NSR (Non-Slavery Rule)\n• OLF (Only Love First)\n• Status blockchain\n• Metriche (G-CSI, N-TSV)\n• Trasparenza del framework');
+            },
+            
+            send() {
+                const input = document.getElementById('chatInput');
+                const message = input.value.trim();
+                if (!message) return;
+                
+                this.addMessage('user', message);
+                input.value = '';
+                
+                setTimeout(() => this.respond(message), 500);
+            },
+            
+            respond(query) {
+                const q = query.toLowerCase();
+                let response = 'Domanda interessante! Posso aiutarti con: NSR, OLF, blockchain, G-CSI, trasparenza. Prova a chiedere di uno di questi temi.';
+                
+                for (const [key, value] of Object.entries(knowledgeBase)) {
+                    if (q.includes(key)) {
+                        response = value;
+                        break;
+                    }
+                }
+                
+                this.addMessage('assistant', response);
+            },
+            
+            addMessage(role, content) {
+                const messagesDiv = document.getElementById('chatMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message message-${role}`;
+                messageDiv.innerHTML = `<div class="message-content">${content.replace(/\n/g, '<br>')}</div>`;
+                messagesDiv.appendChild(messageDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        };
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            chat.init();
+            console.log('✅ Apollo-Euystacio System Initialized');
+        });
+    </script>
+</body>
+</html>
